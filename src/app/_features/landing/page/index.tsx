@@ -7,6 +7,7 @@ import Dock from "../components/Dock"
 import Masthead from "../components/Masthead"
 import Intro from "../components/WorkExperience"
 import Skills from "../components/Skills"
+import ActiveProjects from "../components/ActiveProjects"
 import Projects from "../components/Projects"
 
 // Motion components
@@ -78,8 +79,9 @@ export default function Landing() {
       <C.Box position="relative" zIndex={20} w="full">
         <Masthead />
         <Intro />
-        <Skills />
+        <ActiveProjects />
         <Projects />
+        <Skills />
       </C.Box>
     </C.Box>
   )

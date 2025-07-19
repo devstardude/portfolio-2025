@@ -18,15 +18,23 @@ export default function AchievementGrid({
       >
         Key Achievements
       </C.Heading>
-      <C.SimpleGrid columns={{ base: 1, md: 3 }} gap={4}>
+      <C.SimpleGrid
+        columns={{
+          base: 1,
+          sm: 2,
+          md: 3,
+          lg: achievements.length >= 3 ? 3 : achievements.length,
+        }}
+        gap={3}
+      >
         {achievements.map((achievement, idx) => (
-          <C.Box
+          <C.Flex
             key={idx}
             bg="linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15))"
             border="1px solid"
             borderColor="green.500"
             borderRadius="lg"
-            p={4}
+            p={3}
             textAlign="center"
             position="relative"
             _hover={{
@@ -35,15 +43,18 @@ export default function AchievementGrid({
               borderColor: "green.400",
             }}
             transition="all 0.3s ease"
+            alignItems="center"
+            justifyContent="center"
           >
             <C.Text
               fontWeight="medium"
               color="green.200"
-              fontSize={{ base: "sm", md: "md" }}
+              fontSize={{ base: "sm", md: "sm" }}
+              lineHeight="1.4"
             >
               {achievement}
             </C.Text>
-          </C.Box>
+          </C.Flex>
         ))}
       </C.SimpleGrid>
     </C.Box>

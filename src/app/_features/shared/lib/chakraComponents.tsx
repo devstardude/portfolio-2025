@@ -23,6 +23,13 @@ import {
   CardFooter,
   List,
   ListItem,
+  Button,
+  IconButton,
+  Link,
+  Wrap,
+  WrapItem,
+  Image,
+  Dialog,
 } from "@chakra-ui/react"
 
 export {
@@ -49,4 +56,11 @@ export {
   CardFooter,
   List,
   ListItem,
+  Button,
+  IconButton,
+  Link,
+  Wrap,
+  WrapItem,
+  Image,
+  Dialog,
 }

@@ -1,40 +1,90 @@
 "use client"
 import * as C from "../../shared/lib/chakraComponents"
 import Image from "next/image"
+import { Github, Instagram, Linkedin, Youtube } from "lucide-react"
+
+const socialLinks = [
+  {
+    href: "https://github.com/devstardude",
+    icon: Github,
+    label: "GitHub",
+    color: "gray.400",
+  },
+  {
+    href: "https://www.instagram.com/i_m_a.r.u.n/",
+    icon: Instagram,
+    label: "Instagram",
+    color: "pink.400",
+  },
+  {
+    href: "https://linkedin.com/in/arun-shekhar",
+    icon: Linkedin,
+    label: "LinkedIn",
+    color: "blue.400",
+  },
+  {
+    href: "https://www.youtube.com/channel/UCEL_3xlrevncI0OWEzaIY3Q",
+    icon: Youtube,
+    label: "YouTube",
+    color: "red.400",
+  },
+]
 
 function SocialLinks() {
   return (
     <C.Flex
-      position="absolute"
-      top={0}
-      left={0}
-      h="full"
+      position="fixed"
+      top="50%"
+      left={6}
+      transform="translateY(-50%)"
       gap={4}
-      align="flex-start"
       flexDir="column"
-      justify="center"
-      pl={6}
+      zIndex={1000}
     >
-      {[1, 2, 3, 4].map((item, idx) => (
-        <C.Flex
-          key={idx}
-          align="center"
-          px={4}
-          cursor="pointer"
-          w="auto"
-          _hover={{ boxShadow: "lg", borderColor: "cyan.700" }}
-        >
-          <C.Box
-            w={10}
-            h={10}
-            rounded="full"
-            borderWidth={2}
-            borderColor="cyan.800"
-            bg="transparent"
-            transition="all 0.2s"
-          />
-        </C.Flex>
-      ))}
+      {socialLinks.map((social, idx) => {
+        const IconComponent = social.icon
+        return (
+          <a
+            key={idx}
+            href={social.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.label}
+          >
+            <C.Box
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              w={12}
+              h={12}
+              rounded="full"
+              borderWidth={1}
+              borderColor={`${social.color.split(".")[0]}.300`}
+              bg={`${social.color.split(".")[0]}.500/20`}
+              backdropFilter="blur(10px)"
+              color="white"
+              cursor="pointer"
+              transition="all 0.3s ease"
+              _hover={{
+                bg: `${social.color.split(".")[0]}.500/30`,
+                borderColor: social.color,
+                transform: "translateY(-2px)",
+                boxShadow: `0 8px 32px ${
+                  social.color.split(".")[0] === "gray"
+                    ? "rgba(156, 163, 175, 0.3)"
+                    : social.color.split(".")[0] === "pink"
+                    ? "rgba(236, 72, 153, 0.3)"
+                    : social.color.split(".")[0] === "blue"
+                    ? "rgba(59, 130, 246, 0.3)"
+                    : "rgba(239, 68, 68, 0.3)"
+                }`,
+              }}
+            >
+              <IconComponent size={20} />
+            </C.Box>
+          </a>
+        )
+      })}
     </C.Flex>
   )
 }

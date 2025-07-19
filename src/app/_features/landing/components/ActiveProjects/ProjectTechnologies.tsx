@@ -2,11 +2,13 @@
 import * as C from "../../../shared/lib/chakraComponents"
 import GlassTag from "../../../shared/components/GlassTag"
 
-interface TechnologyTagsProps {
+interface ProjectTechnologiesProps {
   technologies: string[]
 }
 
-export default function TechnologyTags({ technologies }: TechnologyTagsProps) {
+export default function ProjectTechnologies({
+  technologies,
+}: ProjectTechnologiesProps) {
   return (
     <C.Box>
       <C.Heading
@@ -17,7 +19,7 @@ export default function TechnologyTags({ technologies }: TechnologyTagsProps) {
       >
         Technologies
       </C.Heading>
-      <C.Flex wrap="wrap" gap={3}>
+      <C.Flex gap={3} wrap="wrap">
         {technologies.map((tech, idx) => (
           <GlassTag key={idx}>{tech}</GlassTag>
         ))}

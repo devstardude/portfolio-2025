@@ -4,6 +4,7 @@ import { MapPin, Calendar, Clock } from "lucide-react"
 import AchievementGrid from "./AchievementGrid"
 import TechnologyTags from "./TechnologyTags"
 import ResponsibilityList from "./ResponsibilityList"
+import GradientWrapper from "../../../shared/components/GradientWrapper"
 
 interface ExperienceCardProps {
   experience: {
@@ -21,31 +22,7 @@ interface ExperienceCardProps {
 
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
   return (
-    <C.Box
-      bg="linear-gradient(135deg, rgba(6, 182, 212, 0.05), rgba(239, 68, 68, 0.05))"
-      border="1px solid"
-      borderColor="rgba(6, 181, 212, 3)"
-      borderRadius="xl"
-      p={{ base: 6, md: 8 }}
-      position="relative"
-      _hover={{
-        bg: "linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(239, 68, 68, 0.1))",
-        borderColor: "cyan.400",
-        transform: "translateY(-4px)",
-        boxShadow: "0 10px 30px rgba(6, 182, 212, 0.2)",
-      }}
-      transition="all 0.4s ease"
-      _before={{
-        content: '""',
-        position: "absolute",
-        top: 0,
-        left: 0,
-        right: 0,
-        height: "2px",
-        bg: "linear-gradient(90deg, transparent, cyan.400, red.400, transparent)",
-        borderRadius: "xl xl 0 0",
-      }}
-    >
+    <GradientWrapper>
       {/* Job Header */}
       <C.Box
         mb={8}
@@ -139,11 +116,21 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
       </C.Box>
 
       {/* Content */}
-      <C.VStack gap={6} align="stretch">
-        <AchievementGrid achievements={experience.achievements} />
-        <TechnologyTags technologies={experience.tech} />
-        <ResponsibilityList responsibilities={experience.highlights} />
-      </C.VStack>
-    </C.Box>
+      <C.Box>
+        {/* Two-Column Layout for Technologies/Achievements and Responsibilities */}
+        <C.SimpleGrid columns={{ base: 1, lg: 2 }} gap={6}>
+          {/* Left Column - Achievements and Technologies */}
+          <C.VStack gap={6} align="stretch">
+            <AchievementGrid achievements={experience.achievements} />
+            <TechnologyTags technologies={experience.tech} />
+          </C.VStack>
+
+          {/* Right Column - Responsibilities */}
+          <C.Box>
+            <ResponsibilityList responsibilities={experience.highlights} />
+          </C.Box>
+        </C.SimpleGrid>
+      </C.Box>
+    </GradientWrapper>
   )
 }

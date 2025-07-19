@@ -73,6 +73,7 @@ export const currentProjects = [
       "Community-focused platform for Sky: Children of the Light players to save, share, and revisit in-game memories",
     period: "June 2024 - Present",
     status: "Active Development",
+    image: "https://i.ibb.co/HWJNs2f/image.png",
     metrics: [
       {
         label: "Active Users",

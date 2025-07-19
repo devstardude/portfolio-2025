@@ -2,13 +2,13 @@
 import * as C from "../../../shared/lib/chakraComponents"
 import StarBulletPoint from "../../../shared/components/StarBulletPoint"
 
-interface ResponsibilityListProps {
-  responsibilities: string[]
+interface ProjectHighlightsProps {
+  highlights: string[]
 }
 
-export default function ResponsibilityList({
-  responsibilities,
-}: ResponsibilityListProps) {
+export default function ProjectHighlights({
+  highlights,
+}: ProjectHighlightsProps) {
   return (
     <C.Box>
       <C.Heading
@@ -17,16 +17,16 @@ export default function ResponsibilityList({
         color="white"
         mb={4}
       >
-        Responsibilities & Impact
+        Key Highlights
       </C.Heading>
-      <C.VStack align="stretch" gap={2}>
-        {responsibilities.map((responsibility, idx) => (
+      <C.VStack align="stretch" gap={3}>
+        {highlights.map((highlight, idx) => (
           <StarBulletPoint
             key={idx}
-            variant="cyan"
-            fontSize={{ base: "sm", md: "sm" }}
+            variant="yellow"
+            fontSize={{ base: "sm", md: "md" }}
           >
-            {responsibility}
+            {highlight}
           </StarBulletPoint>
         ))}
       </C.VStack>
