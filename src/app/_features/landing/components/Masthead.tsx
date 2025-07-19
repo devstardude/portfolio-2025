@@ -34,10 +34,12 @@ function SocialLinks() {
   return (
     <C.Flex
       position="fixed"
-      top="50%"
-      left={6}
-      transform="translateY(-50%)"
-      gap={4}
+      top={{ base: "auto", md: "50%" }}
+      left={{ base: "auto", md: 6 }}
+      bottom={{ base: 6, md: "auto" }}
+      right={{ base: 6, md: "auto" }}
+      transform={{ base: "none", md: "translateY(-50%)" }}
+      gap={{ base: 3, md: 4 }}
       flexDir="column"
       zIndex={1000}
     >
@@ -55,8 +57,8 @@ function SocialLinks() {
               display="flex"
               alignItems="center"
               justifyContent="center"
-              w={12}
-              h={12}
+              w={{ base: 10, md: 12 }}
+              h={{ base: 10, md: 12 }}
               rounded="full"
               borderWidth={1}
               borderColor={`${social.color.split(".")[0]}.300`}
@@ -80,7 +82,7 @@ function SocialLinks() {
                 }`,
               }}
             >
-              <IconComponent size={20} />
+              <IconComponent size={18} />
             </C.Box>
           </a>
         )
