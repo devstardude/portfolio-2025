@@ -103,7 +103,7 @@ export default function Masthead() {
       <SocialLinks />
       <C.Flex flexDir="column" px="5rem">
         <C.Flex align="center">
-          <C.Text fontSize="2rem" fontWeight={400}>
+          <C.Text fontSize={{ base: "1.5rem", md: "2rem" }} fontWeight={400}>
             Hey, I'm{" "}
             <C.Text as="span" color="red.500">
               Arun.
@@ -113,7 +113,7 @@ export default function Masthead() {
             <Image src="/vampireFace.png" alt="me" height={50} width={50} />
           </C.Box>
         </C.Flex>
-        <C.Text fontSize="5.5rem" fontWeight={600}>
+        <C.Text fontSize={{ base: "3rem", md: "5.5rem" }} fontWeight={600}>
           Developer{" "}
           <C.Text as="span" color="red.500">
             /

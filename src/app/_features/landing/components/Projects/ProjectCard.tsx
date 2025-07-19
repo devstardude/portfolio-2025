@@ -142,11 +142,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </MotionBox>
 
       {/* Modal */}
-      <ProjectModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        project={project}
-      />
+      {isModalOpen && (
+        <ProjectModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          project={project}
+        />
+      )}
     </>
   )
 }
