@@ -11,7 +11,7 @@ export default function Projects() {
       title="Projects Showcase"
       Icon={Archive}
       iconColor="#9ca3af"
-      titleColor="gray.400"
+      bgColor="rgba(6, 182, 212, 0.05)"
       description="A collection of past projects and experiments that showcase various technologies and creative solutions"
     >
       {/* Projects Grid */}

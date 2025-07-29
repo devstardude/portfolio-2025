@@ -1,6 +1,5 @@
 "use client"
 import * as C from "@/_features/shared/lib/chakraComponents"
-import { motion } from "framer-motion"
 import {
   Code,
   Database,
@@ -11,9 +10,9 @@ import {
   Wrench,
   Briefcase,
   Server,
+  Zap,
 } from "lucide-react"
-
-const MotionBox = motion(C.Box)
+import SectionWrapper from "../../../shared/components/SectionWrapper"
 
 const techs = [
   {
@@ -119,11 +118,7 @@ function SkillCard({
   index,
 }: SkillCardProps) {
   return (
-    <MotionBox
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+    <C.Box
       bg={gradient}
       backdropFilter="blur(20px)"
       border="1px solid"
@@ -195,23 +190,23 @@ function SkillCard({
       >
         {desc}
       </C.Text>
-    </MotionBox>
+    </C.Box>
   )
 }
 
 export default function Skills() {
   return (
-    <C.Box
-      minH="100vh"
-      position="relative"
-      py={{ base: 16, md: 20 }}
-      px={{ base: 4, md: 6 }}
+    <SectionWrapper
+      title="Technical Skills"
+      Icon={Zap}
+      iconColor="#22d3ee"
+      bgColor="rgba(34, 211, 238, 0.05)"
+      description="A comprehensive overview of technologies and tools I've mastered throughout my development journey"
     >
       {/* Background Effects */}
       <C.Box
         position="absolute"
         inset="0"
-        bg="linear-gradient(135deg, rgba(6, 182, 212, 0.03), rgba(239, 68, 68, 0.03))"
         _before={{
           content: '""',
           position: "absolute",
@@ -236,59 +231,29 @@ export default function Skills() {
         }}
       />
 
-      <C.VStack gap={{ base: 12, md: 16 }} position="relative" zIndex={1}>
-        {/* Section Header */}
-        <MotionBox
-          initial={{ opacity: 0, y: -30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          textAlign="center"
-        >
-          <C.Heading
-            fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}
-            fontWeight="bold"
-            color="white"
-            textShadow="0 0 30px rgba(255, 255, 255, 0.3)"
-            letterSpacing="tight"
-            mb={4}
-          >
-            Technical Skills
-          </C.Heading>
-          <C.Text
-            fontSize={{ base: "lg", md: "xl" }}
-            color="gray.300"
-            maxW="2xl"
-            mx="auto"
-            lineHeight="1.6"
-          >
-            A comprehensive overview of technologies and tools I've mastered
-            throughout my development journey
-          </C.Text>
-        </MotionBox>
-
-        {/* Skills Grid */}
-        <C.SimpleGrid
-          columns={{ base: 2, md: 2, lg: 3 }}
-          gap={{ base: 4, md: 8 }}
-          w="full"
-          maxW="7xl"
-          mx="auto"
-        >
-          {techs.map((tech, index) => (
-            <SkillCard
-              key={tech.title}
-              title={tech.title}
-              desc={tech.desc}
-              icon={tech.icon}
-              color={tech.color}
-              chakraColor={tech.chakraColor}
-              gradient={tech.gradient}
-              index={index}
-            />
-          ))}
-        </C.SimpleGrid>
-      </C.VStack>
-    </C.Box>
+      {/* Skills Grid */}
+      <C.SimpleGrid
+        columns={{ base: 2, md: 2, lg: 3 }}
+        gap={{ base: 4, md: 8 }}
+        w="full"
+        maxW="7xl"
+        mx="auto"
+        position="relative"
+        zIndex={1}
+      >
+        {techs.map((tech, index) => (
+          <SkillCard
+            key={tech.title}
+            title={tech.title}
+            desc={tech.desc}
+            icon={tech.icon}
+            color={tech.color}
+            chakraColor={tech.chakraColor}
+            gradient={tech.gradient}
+            index={index}
+          />
+        ))}
+      </C.SimpleGrid>
+    </SectionWrapper>
   )
 }

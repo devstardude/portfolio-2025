@@ -11,7 +11,7 @@ export default function ActiveProjects() {
       title="Active Projects"
       Icon={Building}
       iconColor="#06b6d4"
-      titleColor="cyan.400"
+      bgColor="rgba(34, 197, 94, 0.05)"
       description="Current initiatives and ongoing developments that showcase innovation and technical expertise"
     >
       {/* Projects Grid */}

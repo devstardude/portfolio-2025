@@ -9,6 +9,9 @@ import Intro from "../components/WorkExperience"
 import Skills from "../components/Skills"
 import ActiveProjects from "../components/ActiveProjects"
 import Projects from "../components/Projects"
+import Blogs from "../components/Blogs"
+import Achievements from "../components/Achievements"
+import Contact from "../components/Contact"
 
 // Motion components
 const MotionBox = motion(C.Box)
@@ -21,13 +24,11 @@ const PARALLAX_CONFIG = {
 export default function Landing() {
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Track scroll progress with viewport-based offsets
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   })
 
-  // Optimized parallax using background-position (no DOM transform)
   const backgroundPosition = useTransform(
     scrollYProgress,
     [0, 1],
@@ -36,13 +37,6 @@ export default function Landing() {
       `center ${PARALLAX_CONFIG.background.range[1]}px`,
     ],
   )
-
-  // Remove content parallax to preserve exact component heights
-  // const contentY = useTransform(
-  //   scrollYProgress,
-  //   [0, 1],
-  //   [PARALLAX_CONFIG.content.range[0], PARALLAX_CONFIG.content.range[1]],
-  // )
 
   return (
     <C.Box
@@ -53,7 +47,6 @@ export default function Landing() {
       color="gray.300"
       overflow="hidden"
     >
-      {/* Background starfield with optimized parallax */}
       <MotionBox
         position="fixed"
         top={0}
@@ -81,7 +74,10 @@ export default function Landing() {
         <Intro />
         <ActiveProjects />
         <Projects />
+        <Blogs />
+        <Achievements />
         <Skills />
+        <Contact />
       </C.Box>
     </C.Box>
   )

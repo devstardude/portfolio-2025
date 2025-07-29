@@ -12,7 +12,6 @@ export default function WorkExperience() {
       title="Work Experience"
       Icon={Building}
       iconColor={theme.token("colors.red.400")}
-      titleColor="red.400"
       bgColor="rgba(0, 136, 255, 0.05)"
       description="Organizations I’ve proudly contributed to, grown with, and genuinely enjoy(ed) working at."
     >
