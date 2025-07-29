@@ -8,6 +8,7 @@ import SectionWrapper from "../../../shared/components/SectionWrapper"
 export default function Achievements() {
   return (
     <SectionWrapper
+      id="achievements"
       title="Achievements"
       Icon={Award}
       iconColor="#fbbf24"

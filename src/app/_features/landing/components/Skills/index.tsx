@@ -197,8 +197,9 @@ function SkillCard({
 export default function Skills() {
   return (
     <SectionWrapper
+      id="skills"
       title="Technical Skills"
-      Icon={Zap}
+      Icon={Code}
       iconColor="#22d3ee"
       bgColor="rgba(34, 211, 238, 0.05)"
       description="A comprehensive overview of technologies and tools I've mastered throughout my development journey"

@@ -34,11 +34,11 @@ function SocialLinks() {
   return (
     <C.Flex
       position="fixed"
-      top={{ base: "auto", md: "50%" }}
+      top={{ base: "50%", md: "50%" }}
       left={{ base: "auto", md: 6 }}
-      bottom={{ base: 6, md: "auto" }}
+      bottom={{ base: "auto", md: "auto" }}
       right={{ base: 6, md: "auto" }}
-      transform={{ base: "none", md: "translateY(-50%)" }}
+      transform={{ base: "translateY(-50%)", md: "translateY(-50%)" }}
       gap={{ base: 3, md: 4 }}
       flexDir="column"
       zIndex={1000}

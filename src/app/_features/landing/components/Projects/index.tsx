@@ -1,16 +1,17 @@
 "use client"
 import * as C from "../../../shared/lib/chakraComponents"
 import { projects } from "../../../shared/data/Content"
-import { Archive } from "lucide-react"
+import { FolderOpen } from "lucide-react"
 import ProjectCard from "./ProjectCard"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
 
 export default function Projects() {
   return (
     <SectionWrapper
+      id="projects"
       title="Projects Showcase"
-      Icon={Archive}
-      iconColor="#9ca3af"
+      Icon={FolderOpen}
+      iconColor="#55b7e4"
       bgColor="rgba(6, 182, 212, 0.05)"
       description="A collection of past projects and experiments that showcase various technologies and creative solutions"
     >

@@ -2,6 +2,7 @@
 import { ReactNode } from "react"
 import { LucideIcon } from "lucide-react"
 import * as C from "../../lib/chakraComponents"
+import SquigglyDivider from "../SquigglyDivider"
 
 interface SectionWrapperProps {
   title: string
@@ -10,6 +11,7 @@ interface SectionWrapperProps {
   bgColor?: string
   description?: string
   children: ReactNode
+  id?: string
 }
 
 export default function SectionWrapper({
@@ -19,15 +21,18 @@ export default function SectionWrapper({
   bgColor,
   description,
   children,
+  id,
 }: SectionWrapperProps) {
   return (
     <C.Box
+      id={id}
       minH="100vh"
       w="full"
       color="gray.300"
-      py={{ base: 16, md: 20 }}
+      py={{ base: 20, md: 24 }}
       px={{ base: 4, md: 8 }}
       bg={bgColor}
+      position="relative"
     >
       <C.Container maxW="6xl" mx="auto">
         {/* Section Header */}
@@ -61,6 +66,9 @@ export default function SectionWrapper({
         {/* Content */}
         {children}
       </C.Container>
+
+      {/* Squiggly Divider */}
+      {/* <SquigglyDivider /> */}
     </C.Box>
   )
 }

@@ -9,25 +9,56 @@ import {
 } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import * as C from "@/_features/shared/lib/chakraComponents"
+import {
+  BriefcaseBusiness,
+  FolderOpen,
+  BookText,
+  Award,
+  Zap,
+  Code,
+  Mail,
+  FileText,
+} from "lucide-react"
+import { Tooltip } from "../../../shared/components/ui/tooltip"
 
 const MotionFlex = motion(C.Flex)
 const MotionBox = motion(C.Box)
 
 export const dockData = [
   {
-    tooltip: "About me",
+    tooltip: "Work Experience",
+    sectionId: "experience",
+    icon: BriefcaseBusiness,
   },
   {
-    tooltip: "Skills",
+    tooltip: "Active Projects",
+    sectionId: "active-projects",
+    icon: Zap,
   },
   {
-    tooltip: "Project",
+    tooltip: "Projects",
+    sectionId: "projects",
+    icon: FolderOpen,
+  },
+  {
+    tooltip: "Blogs",
+    sectionId: "blogs",
+    icon: BookText,
   },
   {
     tooltip: "Achievements",
+    sectionId: "achievements",
+    icon: Award,
   },
   {
-    tooltip: "Contact me",
+    tooltip: "Skills",
+    sectionId: "skills",
+    icon: Code,
+  },
+  {
+    tooltip: "Contact",
+    sectionId: "contact",
+    icon: Mail,
   },
 ]
 
@@ -76,7 +107,12 @@ export default function Dock() {
           maxW="90%"
         >
           {dockData.map((data, idx) => (
-            <MobileAppIcon key={idx} tooltip={data.tooltip} />
+            <MobileAppIcon
+              key={idx}
+              tooltip={data.tooltip}
+              sectionId={data.sectionId}
+              icon={data.icon}
+            />
           ))}
         </MotionFlex>
       </C.Flex>
@@ -113,12 +149,18 @@ export default function Dock() {
         }}
       >
         {dockData.map((data, idx) => (
-          <AppIcon key={idx} mouseX={mouseX} tooltip={data.tooltip} />
+          <AppIcon
+            key={idx}
+            mouseX={mouseX}
+            tooltip={data.tooltip}
+            sectionId={data.sectionId}
+            icon={data.icon}
+          />
         ))}
         <C.Box h="full" bg="transparent">
           <C.Box h="3rem" w="2px" bg="gray.400" mt={2} opacity={0.6}></C.Box>
         </C.Box>
-        <AppIcon mouseX={mouseX} tooltip="Resume" />
+        <AppIcon mouseX={mouseX} tooltip="Resume" icon={FileText} />
       </MotionFlex>
     </C.Flex>
   )
@@ -127,9 +169,13 @@ export default function Dock() {
 function AppIcon({
   mouseX,
   tooltip,
+  sectionId,
+  icon: Icon,
 }: {
   mouseX: MotionValue
   tooltip?: string
+  sectionId?: string
+  icon?: React.ElementType
 }) {
   let ref = useRef<HTMLDivElement>(null)
 
@@ -142,42 +188,159 @@ function AppIcon({
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40])
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 })
 
+  // Scale icon size to match wrapper width for macOS dock effect
+  let iconSize = useTransform(width, (w) => w * 0.8)
+
+  const handleClick = () => {
+    if (sectionId) {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    }
+  }
+
   return (
-    <MotionBox
-      ref={ref}
-      style={{
-        width,
-        // transition: "all 0.3s ease",
+    <Tooltip
+      content={tooltip}
+      openDelay={0}
+      contentProps={{
+        bg: "rgba(255, 255, 255, 0.1)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255, 255, 255, 0.2)",
+        borderRadius: "lg",
+        px: 4,
+        py: 3,
+        fontSize: "sm",
+        fontWeight: "medium",
+        color: "white",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+        textShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
       }}
-      aspectRatio="1 / 1"
-      w="10"
-      borderRadius="full"
-      bg="gray.400"
-      cursor="pointer"
-    />
+    >
+      <MotionBox
+        ref={ref}
+        style={{
+          width,
+          // transition: "all 0.3s ease",
+        }}
+        aspectRatio="1 / 1"
+        w="10"
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.1)"
+        backdropFilter="blur(10px)"
+        border="1px solid rgba(255, 255, 255, 0.2)"
+        cursor="pointer"
+        onClick={handleClick}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        p={2}
+        _hover={{
+          bg: "rgba(255, 255, 255, 0.2)",
+          borderColor: "rgba(255, 255, 255, 0.3)",
+        }}
+      >
+        {Icon && (
+          <motion.div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Icon
+              width={iconSize}
+              height={iconSize}
+              color="white"
+              style={{
+                filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.3))",
+              }}
+            />
+          </motion.div>
+        )}
+      </MotionBox>
+    </Tooltip>
   )
 }
 
-function MobileAppIcon({ tooltip }: { tooltip: string }) {
+function MobileAppIcon({
+  tooltip,
+  sectionId,
+  icon: Icon,
+}: {
+  tooltip: string
+  sectionId?: string
+  icon?: React.ElementType
+}) {
+  const handleClick = () => {
+    if (sectionId) {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+      }
+    }
+  }
+
   return (
-    <C.Box
-      w={{ base: 8, sm: 10 }}
-      h={{ base: 8, sm: 10 }}
-      borderRadius="full"
-      bg="gray.400"
-      cursor="pointer"
-      position="relative"
-      style={{
-        transition: "all 0.2s ease",
+    <Tooltip
+      content={tooltip}
+      openDelay={0}
+      contentProps={{
+        bg: "rgba(255, 255, 255, 0.1)",
+        backdropFilter: "blur(20px)",
+        border: "1px solid rgba(255, 255, 255, 0.2)",
+        borderRadius: "lg",
+        px: 4,
+        py: 3,
+        fontSize: "sm",
+        fontWeight: "medium",
+        color: "white",
+        boxShadow: "0 8px 32px rgba(0, 0, 0, 0.2)",
+        textShadow: "0 0 10px rgba(255, 255, 255, 0.3)",
       }}
-      _active={{
-        transform: "scale(0.95)",
-        bg: "gray.300",
-      }}
-      _hover={{
-        bg: "gray.300",
-        transform: "scale(1.05)",
-      }}
-    />
+    >
+      <C.Box
+        w={{ base: 8, sm: 10 }}
+        h={{ base: 8, sm: 10 }}
+        borderRadius="full"
+        bg="rgba(255, 255, 255, 0.1)"
+        backdropFilter="blur(10px)"
+        border="1px solid rgba(255, 255, 255, 0.2)"
+        cursor="pointer"
+        position="relative"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        style={{
+          transition: "all 0.2s ease",
+        }}
+        _active={{
+          transform: "scale(0.95)",
+          bg: "rgba(255, 255, 255, 0.15)",
+        }}
+        _hover={{
+          bg: "rgba(255, 255, 255, 0.2)",
+          borderColor: "rgba(255, 255, 255, 0.3)",
+          transform: "scale(1.05)",
+        }}
+        onClick={handleClick}
+      >
+        {Icon && (
+          <Icon
+            width={16}
+            height={16}
+            color="white"
+            style={{ filter: "drop-shadow(0 0 4px rgba(255, 255, 255, 0.3))" }}
+          />
+        )}
+      </C.Box>
+    </Tooltip>
   )
 }

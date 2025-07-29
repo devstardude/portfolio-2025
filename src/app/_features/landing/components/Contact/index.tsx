@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Image from "next/image"
 import * as C from "../../../shared/lib/chakraComponents"
 import { Mail, Copy, Check } from "lucide-react"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
@@ -19,6 +20,7 @@ export default function Contact() {
 
   return (
     <SectionWrapper
+      id="contact"
       title="Let's Connect"
       Icon={Mail}
       iconColor="#22c55e"
@@ -138,15 +140,33 @@ export default function Contact() {
         </C.Box>
 
         {/* Additional Contact Info */}
-        <C.Text
-          mt={8}
-          fontSize={{ base: "sm", md: "md" }}
-          color="gray.400"
-          fontStyle="italic"
-        >
-          Available for freelance projects, collaborations, and full-time
-          opportunities
-        </C.Text>
+
+        {/* Vampire Picture - Portfolio Ending */}
+        <C.Flex justify="center" mt={12}>
+          <C.Box
+            p={4}
+            borderRadius="full"
+            // bg="rgba(255, 255, 255, 0.05)"
+            // border="1px solid rgba(255, 255, 255, 0.1)"
+            backdropFilter="blur(10px)"
+            _hover={{
+              bg: "rgba(255, 255, 255, 0.08)",
+              borderColor: "rgba(255, 255, 255, 0.2)",
+              transform: "scale(1.05)",
+            }}
+            style={{
+              transition: "all 0.3s ease",
+            }}
+          >
+            <Image
+              src="/vampireFace.png"
+              alt="Arun - Portfolio Author"
+              height={80}
+              width={80}
+              style={{ borderRadius: "50%" }}
+            />
+          </C.Box>
+        </C.Flex>
       </C.Box>
     </SectionWrapper>
   )
