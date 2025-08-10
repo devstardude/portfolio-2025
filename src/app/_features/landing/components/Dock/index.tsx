@@ -21,6 +21,8 @@ import {
 } from "lucide-react"
 import { Tooltip } from "../../../shared/components/ui/tooltip"
 import { SECTION_BG_COLORS } from "@/_features/shared/data"
+import Image from "next/image"
+import AboutMeIcon from "./AboutMeIcon"
 
 const MotionFlex = motion(C.Flex)
 const MotionBox = motion(C.Box)
@@ -178,7 +180,8 @@ export default function Dock() {
         <C.Box h="full" bg="transparent">
           <C.Box h="3rem" w="2px" bg="gray.400" mt={2} opacity={0.6}></C.Box>
         </C.Box>
-        <AppIcon mouseX={mouseX} tooltip="Resume" icon={FileText} />
+        {/* Special image icon (popover disabled) */}
+        <AboutMeIcon mouseX={mouseX} />
       </MotionFlex>
     </C.Flex>
   )

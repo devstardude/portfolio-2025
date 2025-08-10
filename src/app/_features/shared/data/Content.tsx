@@ -1,3 +1,4 @@
+import Link from "next/link"
 import {
   ExternalLink,
   Star,
@@ -11,28 +12,74 @@ import {
   TrendingUp,
   Building,
   Users,
+  Link as LinkIcon,
 } from "lucide-react"
 
 export const experiences = [
   {
     title: "Frontend - Blockchain Engineer",
-    company: "BrahamFi",
+    company: "BrahmaFi",
     location: "British Virgin Islands",
     period: "Jan 2023 - Present",
     type: "Full-time",
     current: true,
     highlights: [
-      "Contributed to multiple Web3 DeFi apps providing custodial services and on-chain execution environment",
-      "Developed 'Console' from scratch serving as execution environment for SAFE wallets",
-      "Merged 100k+ lines of code into production ensuring efficiency and scalability",
-      "Implemented multi-sig functionality, transaction builder, send, swap, and DeFi dashboard",
-      "Helped secure $2.5M seed round extension led by Greenfield Capital",
+      <p>
+        Led frontend development of{" "}
+        <Link href="#active-projects" style={{ color: "#22d3ee" }}>
+          <strong>Brahma Accounts</strong>
+          <LinkIcon
+            style={{
+              display: "inline-block",
+              marginLeft: 2,
+              verticalAlign: "text-top",
+            }}
+            width={14}
+            height={14}
+          />
+        </Link>
+        , a multi-chain DeFi execution environment for{" "}
+        <strong>SAFE wallets</strong>
+      </p>,
+      <p>
+        Built UI for <strong>multi-sig</strong>,{" "}
+        <strong>
+          transaction builder send, swap, lending, bridging, and automation
+          features
+        </strong>
+        , and helped integrate <strong>DeFi strategies</strong> like{" "}
+        <strong>TWAP/DCA</strong>, <strong>Morpho Agent</strong>,{" "}
+        <strong>BGT/iBGT automation</strong>, and leverage loops
+      </p>,
+      <p>
+        Led frontend integration of&nbsp;
+        <Link href="#active-projects" style={{ color: "#22d3ee" }}>
+          <strong>Swype Cards</strong>
+          <LinkIcon
+            style={{
+              display: "inline-block",
+              marginLeft: 2,
+              verticalAlign: "text-top",
+            }}
+            width={14}
+            height={14}
+          />
+        </Link>
+        , enabling real-time <strong>borrowing</strong> and{" "}
+        <strong>payments</strong> against on-chain collateral
+      </p>,
+
+      <p>
+        Integrated <strong>ConsoleKit SDK</strong> to enable{" "}
+        <strong>Brahma Agents</strong>, automating DeFi strategies and on-chain
+        operations for developers and power users
+      </p>,
     ],
     tech: ["Next.js", "TypeScript", "Ethers", "Web3", "DeFi", "SAFE Wallets"],
     achievements: [
-      "$2.5M seed funding secured",
-      "100k+ lines of code merged",
-      "Built Console from scratch",
+      "Shipped Brahma Accounts and Swype Cards to production across multiple EVM chains",
+      "Contributed to $1B+ volume, 240k+ accounts, and $2.5M seed extension",
+      "Merged 200k+ lines of code with focus on performance, scalability, and UX",
     ],
   },
   {
@@ -72,22 +119,23 @@ export const currentProjects = [
     description:
       "Community-focused platform for Sky: Children of the Light players to save, share, and revisit in-game memories",
     period: "June 2024 - Present",
-    status: "Active Development",
+    status: "Personal",
     image: "https://i.ibb.co/HWJNs2f/image.png",
+    link: "https://example.com",
     metrics: [
       {
         label: "Active Users",
-        value: "350+",
+        value: "850+",
         icon: <Users className="w-4 h-4" />,
       },
       {
         label: "Shared Memories",
-        value: "3,000+",
+        value: "9,000+",
         icon: <Star className="w-4 h-4" />,
       },
       {
         label: "Monthly Views",
-        value: "4k",
+        value: "4k+",
         icon: <TrendingUp className="w-4 h-4" />,
       },
       {
@@ -97,9 +145,9 @@ export const currentProjects = [
       },
     ],
     community: [
-      { platform: "TikTok", followers: "1k+" },
-      { platform: "Instagram", followers: "600+" },
-      { platform: "Discord", members: "300+" },
+      { platform: "TikTok", followers: "1000+" },
+      { platform: "Instagram", followers: "1000+" },
+      { platform: "Discord", members: "900+" },
     ],
     tech: ["Next.js", "Chakra UI", "PostgreSQL", "Community Management"],
     highlights: [
@@ -108,6 +156,40 @@ export const currentProjects = [
       "Gaining experience in project management and user acquisition",
       "Active community building and marketing strategies",
     ],
+  },
+]
+
+// Compact current projects data (brief)
+export const compactCurrentProject = [
+  {
+    title: "Brahma Accounts",
+    description:
+      "Multi-chain DeFi execution environment for SAFE wallets, enabling asset management, automation, and advanced strategies.",
+    image: "https://i.ibb.co/MDvnsgRJ/Xnip2025-08-10-15-51-21.webp",
+    highlights: [
+      "Trade, automate, and manage assets across multiple chains",
+      "Supports send, swap, lend, bridge, multi-sig, and transaction builder",
+      "Integrated DeFi strategies like TWAP/DCA, Morpho Agent, BGT/iBGT automation, and leverage loops",
+    ],
+    tech: ["Next.js", "TypeScript", "Ethers", "SAFE", "ConsoleKit"],
+    link: "https://console.brahma.fi/",
+    period: "Jan 2023 - Present",
+    status: "Work",
+  },
+  {
+    title: "Swype Cards",
+    description:
+      "Real-time borrowing and payments solution backed by on-chain collateral, built on top of ConsoleKit.",
+    image: "https://i.ibb.co/TBCgSmL0/Xnip2025-08-10-15-48-44.webp",
+    highlights: [
+      "Seamless payment UX with instant collateralized borrowing",
+      "Integrated with ConsoleKit agents for automated repayment and position management",
+      "Bridges DeFi and real-world spending through smart contract-powered credit",
+    ],
+    tech: ["Next.js", "TypeScript", "TailwindCSS", "Brahma Cards SDK"],
+    link: "https://swype.fun/",
+    period: "July 2025 - Present",
+    status: "Work",
   },
 ]
 

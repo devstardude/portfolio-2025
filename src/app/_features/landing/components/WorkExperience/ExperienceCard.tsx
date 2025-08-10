@@ -16,7 +16,7 @@ interface ExperienceCardProps {
     current: boolean
     achievements: string[]
     tech: string[]
-    highlights: string[]
+    highlights: string[] | React.ReactNode[]
   }
 }
 

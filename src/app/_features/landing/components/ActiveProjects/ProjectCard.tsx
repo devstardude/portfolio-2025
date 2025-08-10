@@ -6,6 +6,7 @@ import ProjectCommunity from "./ProjectCommunity"
 import ProjectTechnologies from "./ProjectTechnologies"
 import ProjectHighlights from "./ProjectHighlights"
 import GradientWrapper from "../../../shared/components/GradientWrapper"
+import HyperlinkItem from "../../../shared/components/HyperlinkItem"
 
 interface ProjectCardProps {
   project: {
@@ -26,6 +27,7 @@ interface ProjectCardProps {
     }>
     tech: string[]
     highlights: string[]
+    link?: string
   }
 }
 
@@ -94,11 +96,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             borderRadius: "full",
           }}
         >
-          <C.Flex align="center" gap={4} mb={3}>
+          <C.Flex align="center" gap={4} mb={3} wrap="wrap">
             <C.Heading
               fontSize={{ base: "2xl", md: "3xl" }}
               fontWeight="bold"
-              color="white"
+              color="green.300"
               textShadow="0 0 10px rgba(255, 255, 255, 0.2)"
             >
               {project.title}
@@ -116,6 +118,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             >
               {project.status}
             </C.Badge>
+            {project.link && (
+              <HyperlinkItem href={project.link} color="green" />
+            )}
           </C.Flex>
           <C.Text
             fontSize={{ base: "md", md: "lg" }}
