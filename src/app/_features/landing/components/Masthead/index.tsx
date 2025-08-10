@@ -1,7 +1,7 @@
 "use client"
-import * as C from "../../shared/lib/chakraComponents"
+import * as C from "@/_features/shared/lib/chakraComponents"
 import Image from "next/image"
-import SocialLinks from "../../shared/components/SocialLinks"
+import SocialLinks from "@/_features/shared/components/SocialLinks"
 
 export default function Masthead() {
   return (
@@ -15,7 +15,7 @@ export default function Masthead() {
       px={6}
     >
       <SocialLinks />
-      <C.Flex flexDir="column" px="5rem" zIndex={1}>
+      <C.Flex flexDir="column" px="5rem">
         <C.Flex align="center">
           <C.Text fontSize={{ base: "1.5rem", md: "2rem" }} fontWeight={400}>
             Hey, I'm{" "}

@@ -121,7 +121,7 @@ export const currentProjects = [
     period: "June 2024 - Present",
     status: "Personal",
     image: "https://i.ibb.co/HWJNs2f/image.png",
-    link: "https://example.com",
+    link: "https://theskymemories.com/",
     metrics: [
       {
         label: "Active Users",

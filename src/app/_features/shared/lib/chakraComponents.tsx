@@ -30,6 +30,7 @@ import {
   WrapItem,
   Image,
   Dialog,
+  BoxProps,
 } from "@chakra-ui/react"
 
 export {
@@ -63,4 +64,5 @@ export {
   WrapItem,
   Image,
   Dialog,
+  type BoxProps,
 }

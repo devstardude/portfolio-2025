@@ -16,19 +16,19 @@ export default function Landing() {
   return (
     <StarsWrapper>
       {/* Dock layer */}
-      <C.Box position="relative">
+      <C.Box position="relative" zIndex={2}>
         <Dock />
       </C.Box>
 
       {/* Main content */}
-      <C.Box position="relative" w="full">
+      <C.Box position="relative" w="full" zIndex={1}>
         <Masthead />
         <Intro />
         <ActiveProjects />
         <Projects />
+        <Skills />
         <Blogs />
         <Achievements />
-        <Skills />
         <Contact />
       </C.Box>
     </StarsWrapper>

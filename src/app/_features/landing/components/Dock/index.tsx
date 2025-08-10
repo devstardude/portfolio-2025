@@ -44,20 +44,22 @@ export const dockData = [
     icon: FolderOpen,
   },
   {
+    tooltip: "Skills",
+    sectionId: "skills",
+    icon: Code,
+  },
+  {
     tooltip: "Blogs",
     sectionId: "blogs",
     icon: BookText,
   },
+
   {
     tooltip: "Achievements",
     sectionId: "achievements",
     icon: Award,
   },
-  {
-    tooltip: "Skills",
-    sectionId: "skills",
-    icon: Code,
-  },
+
   {
     tooltip: "Contact",
     sectionId: "contact",
@@ -109,7 +111,6 @@ export default function Dock() {
         bottom={{ base: 4, sm: 6 }}
         justify="center"
         px={{ base: 4, sm: 6 }}
-        zIndex={20}
       >
         <MotionFlex
           initial={{ opacity: 0, y: 20 }}
@@ -150,7 +151,6 @@ export default function Dock() {
       bottom="6"
       justify="center"
       pr={{ base: 4, md: 12 }}
-      zIndex={20}
     >
       <MotionFlex
         onMouseMove={(e) => mouseX.set(e.pageX)}

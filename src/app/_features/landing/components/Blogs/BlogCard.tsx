@@ -26,6 +26,7 @@ export default function BlogCard({ blog }: BlogCardProps) {
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <C.Box
+        w="full"
         position="relative"
         cursor="pointer"
         onClick={handleCardClick}

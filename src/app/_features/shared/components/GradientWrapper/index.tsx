@@ -2,14 +2,17 @@
 import * as C from "../../lib/chakraComponents"
 import { ReactNode } from "react"
 
-interface GradientWrapperProps {
+interface GradientWrapperProps extends C.BoxProps {
   children: ReactNode
   glassmorphism?: boolean
+  p?: any // Accepts Chakra's padding prop types (number, string, object, etc.)
 }
 
 export default function GradientWrapper({
   children,
   glassmorphism = false,
+  p,
+  ...boxProps
 }: GradientWrapperProps) {
   return (
     <C.Box
@@ -17,12 +20,12 @@ export default function GradientWrapper({
       border="1px solid"
       borderColor="rgba(6, 182, 212, 0.2)"
       borderRadius="xl"
-      p={{ base: 6, md: 8 }}
+      p={p !== undefined ? p : { base: 6, md: 8 }}
       position="relative"
       backdropFilter={
         glassmorphism ? "blur(10px) saturate(180%)" : "blur(0.5px)"
       }
-      backgroundColor={glassmorphism ? "rgba(255,255,255,0.10)" : undefined}
+      backgroundColor={glassmorphism ? "rgba(176, 176, 176, 0.6)" : undefined}
       boxShadow={
         glassmorphism ? "0 8px 32px 0 rgba(31, 38, 135, 0.18)" : undefined
       }
@@ -45,6 +48,7 @@ export default function GradientWrapper({
         bg: "linear-gradient(90deg, transparent, cyan.400, red.400, transparent)",
         borderRadius: "xl xl 0 0",
       }}
+      {...boxProps}
     >
       {children}
     </C.Box>

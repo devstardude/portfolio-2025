@@ -11,8 +11,7 @@ import { useRef, useState, useEffect } from "react"
 import * as C from "@/_features/shared/lib/chakraComponents"
 import Image from "next/image"
 import { createPortal } from "react-dom"
-import GradientWrapper from "../../../shared/components/GradientWrapper"
-import StarBulletPoint from "../../../shared/components/StarBulletPoint"
+import AboutMePopover from "./AboutMePopOver"
 
 // Configuration
 const CURSOR_OFFSET_GAP = 15 // Adjust this value to align arrow with cursor position
@@ -48,7 +47,7 @@ export default function AboutMeIcon({ mouseX }: { mouseX: MotionValue }) {
   }, [isHovering])
 
   const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (e) => {
-    const popoverHeight = 500 // Use consistent fallback
+    const popoverHeight = 400 // Use consistent fallback
     setCursorPos({
       x: e.clientX,
       y: e.clientY - popoverHeight - CURSOR_OFFSET_GAP,
@@ -68,13 +67,6 @@ export default function AboutMeIcon({ mouseX }: { mouseX: MotionValue }) {
     setIsHovering(false)
     setIsPositioned(false)
   }
-
-  const aboutContent = [
-    "I'm a professional Full-stack Developer and Programmer, experienced in a vast range of technologies in Frontend, Backend, Databases, Blockchain, Programming languages, etc.",
-    "I enjoy solving complex problems and building applications that solve real-world problems and learning new technology is always exciting for me.",
-    "Apart from programming, I like to run in the park on a nice evening, as it refreshes my mind and brings more creative ideas.",
-    "In my journey of Programming, I go by the codename: Devstardude",
-  ]
 
   return (
     <>
@@ -128,64 +120,10 @@ export default function AboutMeIcon({ mouseX }: { mouseX: MotionValue }) {
               pointerEvents: "none",
             }}
           >
-            <AboutMePopover aboutContent={aboutContent} />
+            <AboutMePopover />
           </motion.div>,
           document.body,
         )}
     </>
-  )
-}
-
-const AboutMePopover = ({ aboutContent }: { aboutContent: string[] }) => {
-  return (
-    <GradientWrapper glassmorphism>
-      <C.Box maxW={{ base: "90vw", md: "380px" }} minW="320px">
-        {/* Header with avatar */}
-        <C.VStack
-          align="start"
-          gap={3}
-          mb={4}
-          pb={4}
-          borderBottom="1px solid"
-          borderBottomColor="rgba(6, 182, 212, 0.1)"
-        >
-          <C.Flex gap={3} align="center">
-            <Image
-              src="/vampireFace.png"
-              alt="me"
-              width={40}
-              height={40}
-              style={{ borderRadius: 9999 }}
-            />
-            <C.Heading color="green.300" fontSize={{ base: "xl", md: "2xl" }}>
-              About me
-            </C.Heading>
-          </C.Flex>
-        </C.VStack>
-
-        {/* Content */}
-        <C.Box>
-          <C.Heading
-            fontSize={{ base: "md", md: "lg" }}
-            fontWeight="semibold"
-            color="white"
-            mb={3}
-          >
-            Who I am
-          </C.Heading>
-          <C.VStack align="stretch" gap={3}>
-            {aboutContent.map((item, idx) => (
-              <StarBulletPoint
-                key={idx}
-                variant="yellow"
-                fontSize={{ base: "sm", md: "sm" }}
-              >
-                {item}
-              </StarBulletPoint>
-            ))}
-          </C.VStack>
-        </C.Box>
-      </C.Box>
-    </GradientWrapper>
   )
 }
