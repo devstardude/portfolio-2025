@@ -4,6 +4,7 @@ import { blogs } from "../../../shared/data/Content"
 import { BookText } from "lucide-react"
 import BlogCard from "./BlogCard"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 export default function Blogs() {
   return (
@@ -12,7 +13,7 @@ export default function Blogs() {
       title="Blog Posts"
       Icon={BookText}
       iconColor="#8872ed"
-      bgColor="rgba(168, 85, 247, 0.05)"
+      bgColor={SECTION_BG_COLORS.blogs}
       description="Technical articles and insights about web development, blockchain, and emerging technologies"
     >
       {/* Blogs Grid */}

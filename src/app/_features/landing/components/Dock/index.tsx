@@ -20,6 +20,7 @@ import {
   FileText,
 } from "lucide-react"
 import { Tooltip } from "../../../shared/components/ui/tooltip"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 const MotionFlex = motion(C.Flex)
 const MotionBox = motion(C.Box)
@@ -61,6 +62,27 @@ export const dockData = [
     icon: Mail,
   },
 ]
+
+function getHoverBg(sectionId?: string): string | undefined {
+  switch (sectionId) {
+    case "experience":
+      return SECTION_BG_COLORS.workExperience.replace("0.05", "0.12")
+    case "active-projects":
+      return SECTION_BG_COLORS.activeProjects.replace("0.05", "0.12")
+    case "projects":
+      return SECTION_BG_COLORS.projects.replace("0.05", "0.12")
+    case "blogs":
+      return SECTION_BG_COLORS.blogs.replace("0.05", "0.12")
+    case "achievements":
+      return SECTION_BG_COLORS.achievements.replace("0.05", "0.12")
+    case "skills":
+      return SECTION_BG_COLORS.skills.replace("0.05", "0.12")
+    case "contact":
+      return SECTION_BG_COLORS.contact.replace("0.05", "0.12")
+    default:
+      return undefined
+  }
+}
 
 export default function Dock() {
   let mouseX = useMotionValue(Infinity)
@@ -137,10 +159,6 @@ export default function Dock() {
         rounded="2xl"
         px="4"
         pb="3"
-        // bg="rgba(0, 0, 0, 0.4)"
-        // backdropFilter="blur(20px)"
-        // border="1px solid"
-        // borderColor="rgba(6, 182, 212, 0.3)"
         boxShadow="0 8px 32px rgba(6, 182, 212, 0.2)"
         bg="rgba(156, 163, 175, 0.5)"
         css={{
@@ -185,11 +203,11 @@ function AppIcon({
     return val - bounds.x - bounds.width / 2
   })
 
-  let widthSync = useTransform(distance, [-150, 0, 150], [40, 80, 40])
+  let widthSync = useTransform(distance, [-150, 0, 150], [40, 60, 40])
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 })
 
   // Scale icon size to match wrapper width for macOS dock effect
-  let iconSize = useTransform(width, (w) => w * 0.8)
+  let iconSize = useTransform(width, (w) => w * 0.6)
 
   const handleClick = () => {
     if (sectionId) {
@@ -202,6 +220,11 @@ function AppIcon({
       }
     }
   }
+
+  const hoverBg = getHoverBg(sectionId)
+  const baseBg =
+    getHoverBg(sectionId)?.replace("0.12", "0.05") ??
+    "rgba(255, 255, 255, 0.06)"
 
   return (
     <Tooltip
@@ -230,9 +253,9 @@ function AppIcon({
         aspectRatio="1 / 1"
         w="10"
         borderRadius="full"
-        bg="rgba(255, 255, 255, 0.1)"
+        bg={baseBg}
         backdropFilter="blur(10px)"
-        border="1px solid rgba(255, 255, 255, 0.2)"
+        border="1px solid rgba(255, 255, 255, 0.12)"
         cursor="pointer"
         onClick={handleClick}
         display="flex"
@@ -240,8 +263,8 @@ function AppIcon({
         justifyContent="center"
         p={2}
         _hover={{
-          bg: "rgba(255, 255, 255, 0.2)",
-          borderColor: "rgba(255, 255, 255, 0.3)",
+          bg: hoverBg ?? "rgba(255, 255, 255, 0.12)",
+          borderColor: "rgba(255, 255, 255, 0.24)",
         }}
       >
         {Icon && (

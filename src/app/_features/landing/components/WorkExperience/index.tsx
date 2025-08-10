@@ -5,6 +5,7 @@ import { BriefcaseBusiness } from "lucide-react"
 import ExperienceCard from "./ExperienceCard"
 import { theme } from "@/_features/shared/lib/globalTheme"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 export default function WorkExperience() {
   return (
@@ -13,7 +14,7 @@ export default function WorkExperience() {
       title="Work Experience"
       Icon={BriefcaseBusiness}
       iconColor={theme.token("colors.red.400")}
-      bgColor="rgba(0, 136, 255, 0.05)"
+      bgColor={SECTION_BG_COLORS.workExperience}
       description="Organizations I've proudly contributed to, grown with, and genuinely enjoy(ed) working at."
     >
       {/* Experience Cards */}

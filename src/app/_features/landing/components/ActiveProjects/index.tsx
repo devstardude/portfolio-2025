@@ -4,6 +4,7 @@ import { currentProjects } from "../../../shared/data/Content"
 import { Zap } from "lucide-react"
 import ProjectCard from "./ProjectCard"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 export default function ActiveProjects() {
   return (
@@ -12,7 +13,7 @@ export default function ActiveProjects() {
       title="Active Projects"
       Icon={Zap}
       iconColor="#3cdd4c"
-      bgColor="rgba(34, 197, 94, 0.05)"
+      bgColor={SECTION_BG_COLORS.activeProjects}
       description="Current initiatives and ongoing developments that showcase innovation and technical expertise"
     >
       {/* Projects Grid */}

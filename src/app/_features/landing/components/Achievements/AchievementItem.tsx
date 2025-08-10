@@ -31,7 +31,7 @@ export default function AchievementItem({ achievement }: AchievementItemProps) {
         boxShadow: "0 10px 30px rgba(251, 191, 36, 0.15)",
       }}
     >
-      <C.Flex gap={4} align="flex-start">
+      <C.Flex gap={4} align="flex-start" alignItems="center">
         {/* Award Icon */}
         <C.Box
           flexShrink={0}

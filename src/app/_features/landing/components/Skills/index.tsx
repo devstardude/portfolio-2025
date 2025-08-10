@@ -13,6 +13,7 @@ import {
   Zap,
 } from "lucide-react"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 const techs = [
   {
@@ -201,7 +202,7 @@ export default function Skills() {
       title="Technical Skills"
       Icon={Code}
       iconColor="#22d3ee"
-      bgColor="rgba(34, 211, 238, 0.05)"
+      bgColor={SECTION_BG_COLORS.skills}
       description="A comprehensive overview of technologies and tools I've mastered throughout my development journey"
     >
       {/* Background Effects */}

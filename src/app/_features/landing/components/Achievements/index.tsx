@@ -4,6 +4,7 @@ import { achievements } from "../../../shared/data/Content"
 import { Award } from "lucide-react"
 import AchievementItem from "./AchievementItem"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 export default function Achievements() {
   return (
@@ -12,7 +13,7 @@ export default function Achievements() {
       title="Achievements"
       Icon={Award}
       iconColor="#fbbf24"
-      bgColor="rgba(251, 191, 36, 0.05)"
+      bgColor={SECTION_BG_COLORS.achievements}
       description="Recognition and milestones achieved throughout my development journey and community contributions"
     >
       {/* Achievements Container */}

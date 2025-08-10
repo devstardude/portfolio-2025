@@ -1,8 +1,7 @@
 "use client"
 
-import { motion, useScroll, useTransform } from "framer-motion"
-import { useRef } from "react"
 import * as C from "@/_features/shared/lib/chakraComponents"
+import StarsWrapper from "../../shared/components/StarsWrapper"
 import Dock from "../components/Dock"
 import Masthead from "../components/Masthead"
 import Intro from "../components/WorkExperience"
@@ -13,62 +12,15 @@ import Blogs from "../components/Blogs"
 import Achievements from "../components/Achievements"
 import Contact from "../components/Contact"
 
-// Motion components
-const MotionBox = motion(C.Box)
-
-// Parallax configuration - only background to preserve component heights
-const PARALLAX_CONFIG = {
-  background: { speed: 0.3, range: [-100, 100] },
-} as const
-
 export default function Landing() {
-  const containerRef = useRef<HTMLDivElement>(null)
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  })
-
-  const backgroundPosition = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [
-      `center ${PARALLAX_CONFIG.background.range[0]}px`,
-      `center ${PARALLAX_CONFIG.background.range[1]}px`,
-    ],
-  )
-
   return (
-    <C.Box
-      ref={containerRef}
-      position="relative"
-      w="full"
-      minH="100vh"
-      color="gray.300"
-      overflow="hidden"
-    >
-      <MotionBox
-        position="fixed"
-        top={0}
-        left={0}
-        w="100vw"
-        h="100vh"
-        style={{
-          backgroundImage: "url(/bgStars.svg)",
-          backgroundSize: "auto",
-          backgroundPosition: backgroundPosition,
-          willChange: "background-position",
-        }}
-        bgRepeat="repeat"
-        zIndex={0}
-      />
-
+    <StarsWrapper>
       {/* Dock layer */}
       <C.Box position="relative" zIndex={30}>
         <Dock />
       </C.Box>
 
-      {/* Main content - no parallax to preserve exact heights */}
+      {/* Main content */}
       <C.Box position="relative" zIndex={20} w="full">
         <Masthead />
         <Intro />
@@ -79,6 +31,6 @@ export default function Landing() {
         <Skills />
         <Contact />
       </C.Box>
-    </C.Box>
+    </StarsWrapper>
   )
 }

@@ -4,6 +4,7 @@ import Image from "next/image"
 import * as C from "../../../shared/lib/chakraComponents"
 import { Mail, Copy, Check } from "lucide-react"
 import SectionWrapper from "../../../shared/components/SectionWrapper"
+import { SECTION_BG_COLORS } from "@/_features/shared/data"
 
 export default function Contact() {
   const [isCopied, setIsCopied] = useState(false)
@@ -24,7 +25,7 @@ export default function Contact() {
       title="Let's Connect"
       Icon={Mail}
       iconColor="#22c55e"
-      bgColor="rgba(34, 197, 94, 0.05)"
+      bgColor={SECTION_BG_COLORS.contact}
       description="Ready to bring your ideas to life? Let's collaborate and create something amazing together"
     >
       {/* Contact Container */}
