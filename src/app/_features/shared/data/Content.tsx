@@ -18,11 +18,64 @@ import {
 export const experiences = [
   {
     title: "Frontend - Blockchain Engineer",
-    company: "BrahmaFi",
-    location: "British Virgin Islands",
-    period: "Jan 2023 - Present",
+    company: "Polymarket",
+    location: "New York, US",
+    period: "Jan 2026 - Present",
     type: "Full-time",
     current: true,
+    highlights: [
+      <p>
+        Built the frontend for the <strong>CLOB V2</strong> migration that moved
+        every active trader to a new collateral token (<strong>pUSD</strong>),
+        covering a guided upgrade flow (<strong>USDC.e → pUSD</strong>{" "}
+        conversion, contract approvals, and re-placing cancelled limit orders)
+        and cutover screens
+      </p>,
+      <p>
+        Added <strong>ERC-1271</strong> smart-contract wallet support (
+        <strong>UUPS</strong> and <strong>beacon proxies</strong>) to the CLOB
+        and relayer TypeScript SDKs, and shipped a self-serve migration that
+        moves user funds from <strong>Safe wallets</strong> to deposit wallets
+      </p>,
+      <p>
+        Rebuilt token approvals for <strong>PolyV2</strong> contracts, replacing
+        on-chain allowance checks with an API-driven approval list and batching
+        approvals into one signing step, which sharply reduced approval errors
+      </p>,
+      <p>
+        Strengthened authentication with server-issued wallet sign-in
+        challenges, <strong>passkey MFA</strong>, session-key management with
+        revocation through the relayer, and server-driven onboarding
+      </p>,
+      <p>
+        Migrated 3 apps to <strong>Data API v2</strong> (positions, PnL,
+        activity, leaderboards, profile stats) before the v1 shutdown, and
+        integrated <strong>Chainlink TWAP</strong> feeds for settling crypto
+        markets
+      </p>,
+    ],
+    tech: [
+      "TypeScript",
+      "Web3",
+      "DeFi",
+      "CLOB",
+      "ERC-1271",
+      "SAFE Wallets",
+      "Chainlink",
+    ],
+    achievements: [
+      "$75B+ traded in 2026 with up to 780k monthly active traders",
+      "Merged 100+ PRs across multiple repositories",
+      "Moved every active trader to pUSD in the CLOB V2 cutover",
+    ],
+  },
+  {
+    title: "Frontend - Blockchain Engineer",
+    company: "BrahmaFi",
+    location: "British Virgin Islands",
+    period: "Jan 2023 - Jan 2026",
+    type: "Full-time",
+    current: false,
     highlights: [
       <p>
         Led frontend development of{" "}
@@ -165,7 +218,8 @@ export const compactCurrentProject = [
     title: "Brahma Accounts",
     description:
       "Multi-chain DeFi execution environment for SAFE wallets, enabling asset management, automation, and advanced strategies.",
-    image: "https://i.ibb.co/MDvnsgRJ/Xnip2025-08-10-15-51-21.webp",
+    image:
+      "https://framerusercontent.com/images/0zJ2CG9Jvjlp2Wa4lHbGPwZpzJE.png?width=1605&height=902",
     highlights: [
       "Trade, automate, and manage assets across multiple chains",
       "Supports send, swap, lend, bridge, multi-sig, and transaction builder",
@@ -381,7 +435,7 @@ export const blogs = [
     description:
       "Linode products, services, and people enable developers and businesses to build, deploy, and scale applications more easily and cost-effectively in the cloud.",
     image:
-      "https://res.cloudinary.com/practicaldev/image/fetch/s--aWdeRRJz--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0ueeu67ratzne0es3t3d.png",
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0ueeu67ratzne0es3t3d.png",
     ribbon: "dev.to",
     link: "https://dev.to/devstardude/how-to-deploy-react-app-on-remote-linux-server-using-nginx-in-linode-3iid",
   },
@@ -390,7 +444,7 @@ export const blogs = [
     description:
       "Aave is a decentralized finance (DeFi) platform that allows users to borrow and lend cryptocurrencies. It is built on the Ethereum blockchain and uses a protocol called 'smart contracts' to facilitate lending and borrowing.",
     image:
-      "https://res.cloudinary.com/practicaldev/image/fetch/s--FWZuQbEo--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/e9vjuu0zn5pjp0m1usbm.jpg",
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fe9vjuu0zn5pjp0m1usbm.jpg",
     ribbon: "dev.to",
     link: "https://dev.to/devstardude/aave-explained-3po2",
   },
@@ -399,7 +453,7 @@ export const blogs = [
     description:
       "Uniswap is a decentralized exchange (DEX) built on the Ethereum blockchain. It allows users to easily trade Ethereum-based tokens without the need for a centralized authority or intermediaries. ",
     image:
-      "https://res.cloudinary.com/practicaldev/image/fetch/s--a7sO3VJU--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1jnmijs6ndin6n77g034.png",
+      "https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F1jnmijs6ndin6n77g034.png",
     ribbon: "dev.to",
     link: "https://dev.to/devstardude/uniswap-explained-52bn",
   },
