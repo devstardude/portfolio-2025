@@ -64,7 +64,7 @@ export const experiences = [
       "Chainlink",
     ],
     achievements: [
-      "$75B+ traded in 2026 with up to 780k monthly active traders",
+      "Maintain DeFi app with $75B+ traded in 2026 with up to 780k monthly active traders",
       "Merged 100+ PRs across multiple repositories",
       "Moved every active trader to pUSD in the CLOB V2 cutover",
     ],
